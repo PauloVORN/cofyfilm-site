@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% if page.meta_title %}
-  {# Título exato da spec técnica (seção 1) — o formato varia por página
-     (site antes, depois, ou ausente) e não cabe no padrão fixo do
-     jekyll-seo-tag, então aqui é literal e title=false evita duplicata. #}
+  {% comment %}
+    Título exato da spec técnica (seção 1) — o formato varia por página
+    (site antes, depois, ou ausente) e não cabe no padrão fixo do
+    jekyll-seo-tag, então aqui é literal e title=false evita duplicata.
+  {% endcomment %}
   <title>{{ page.meta_title }}</title>
   {% seo title=false %}
   {% else %}
