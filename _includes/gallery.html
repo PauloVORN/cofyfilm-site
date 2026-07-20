@@ -1,0 +1,31 @@
+{% comment %}
+  Galeria masonry (CSS column-count) — nenhuma foto é cortada, cada uma
+  preserva a proporção original (handoff seção 9.1).
+  Parâmetros: folder (obrigatório), limit (opcional), skip_capa (opcional —
+  omite a foto já exibida como capa logo acima).
+{% endcomment %}
+{% assign folder = include.folder %}
+{% assign gallery_path = '/assets/img/' | append: folder | append: '/' %}
+{% assign photos = site.static_files | where_exp: "file", "file.path contains gallery_path" | sort: "path" %}
+{% assign case = site.data.portfolio[folder] %}
+{% if include.skip_capa and case %}
+  {% assign capa_name = case.capa %}
+  {% assign all = photos %}
+  {% assign photos = "" | split: "" %}
+  {% for file in all %}
+    {% unless file.path contains capa_name %}
+      {% assign photos = photos | push: file %}
+    {% endunless %}
+  {% endfor %}
+{% endif %}
+{% if include.limit %}
+  {% assign photos = photos | slice: 0, include.limit %}
+{% endif %}
+<div class="gallery">
+  {% for photo in photos %}
+    {% assign alt_text = photo.basename | replace: '-', ' ' | capitalize %}
+    <a href="{{ photo.path | relative_url }}" class="gallery-item" data-lightbox>
+      <img src="{{ photo.path | relative_url }}" alt="{{ alt_text }}" loading="lazy">
+    </a>
+  {% endfor %}
+</div>

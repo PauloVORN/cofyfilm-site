@@ -1,0 +1,5 @@
+{% assign wa_text = include.text | default: "Olá, vim pelo site da Cofy Film e gostaria de um orçamento." %}
+{% assign wa_label = include.label | default: "Falar no WhatsApp" %}
+<a class="cta-whatsapp" href="https://wa.me/{{ site.whatsapp }}?text={{ wa_text | url_encode | replace: '+', '%20' }}" target="_blank" rel="noopener">
+  {{ wa_label }}
+</a>

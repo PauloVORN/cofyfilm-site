@@ -1,0 +1,15 @@
+{% comment %}
+  Foto de capa em destaque antes da galeria completa (handoff seção 9.2).
+  Parâmetro: folder — busca capa e legenda em _data/portfolio.yml.
+{% endcomment %}
+{% assign case = site.data.portfolio[include.folder] %}
+{% if case %}
+<figure class="case-capa">
+  {% assign capa_path = '/assets/img/' | append: include.folder | append: '/' | append: case.capa %}
+  {% assign alt_text = case.capa | split: '.' | first | replace: '-', ' ' | capitalize %}
+  <a href="{{ capa_path | relative_url }}" data-lightbox style="cursor: zoom-in;">
+    <img src="{{ capa_path | relative_url }}" alt="{{ alt_text }}">
+  </a>
+  <figcaption>{{ case.legenda }}</figcaption>
+</figure>
+{% endif %}

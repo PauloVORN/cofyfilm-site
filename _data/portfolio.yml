@@ -1,0 +1,23 @@
+# Estrutura de cases do portfólio (campo `capa` — handoff seções 8 e 9.2).
+# Cada categoria tem uma foto de capa exibida em destaque antes da galeria
+# completa, e reaproveitada no card da Home. Pra trocar a capa, basta apontar
+# pra outro arquivo da mesma pasta em assets/img/<pasta>/.
+retrato:
+  titulo: "Retratos e Equipes"
+  legenda: "Retrato corporativo · estúdio e locação"
+  capa: retrato-corporativo-executiva-perfil-dramatico-rio-de-janeiro.jpg
+
+industrial:
+  titulo: "Indústria"
+  legenda: "Operação portuária · sessão única"
+  capa: fotografia-industrial-operador-guindaste-cabine-rio-de-janeiro.jpg
+
+arquitetura:
+  titulo: "Arquitetura"
+  legenda: "Espaços e estruturas · Rio de Janeiro"
+  capa: fotografia-arquitetura-panoramica-piscina-fachada-rio-de-janeiro.jpg
+
+eventos:
+  titulo: "Eventos"
+  legenda: "Cobertura corporativa · Rio de Janeiro"
+  capa: cobertura-evento-corporativo-palestrante-microfone-rio-de-janeiro.jpg

@@ -1,0 +1,43 @@
+title: Cofy Film
+tagline: Fotografia e vídeo corporativo no Rio de Janeiro
+description: >-
+  Fotografia e vídeo corporativo no Rio de Janeiro. Retratos executivos,
+  fotografia industrial e arquitetônica, vídeo institucional e cobertura de eventos.
+url: "https://cofyfilm.com.br"
+baseurl: ""
+lang: pt-BR
+timezone: America/Sao_Paulo
+
+# Contato e redes
+whatsapp: "5521972886431"
+whatsapp_display: "(21) 97288-6431"
+instagram: "https://instagram.com/cofyfilm"
+linkedin: "https://linkedin.com/in/paulohlima"
+
+# Google Ads — preencher ao criar a campanha (ex: "AW-123456789" e o label
+# de conversão). Vazio = nenhuma tag é carregada.
+google_ads_id: ""
+google_ads_conversion_label: "XXXXXXXXXXXXXXXXXXX"
+
+# SEO
+logo: /assets/img/cofyfilm-logo.png
+twitter:
+  card: summary_large_image
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/img/retrato/retrato-corporativo-executiva-blazer-amarelo-rio-de-janeiro.jpg
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

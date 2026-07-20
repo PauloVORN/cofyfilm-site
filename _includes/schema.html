@@ -1,0 +1,40 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "{{ site.url }}/#cofyfilm",
+  "name": "Cofy Film",
+  "description": "{{ site.description | strip_newlines | strip }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}/assets/img/cofyfilm-logo.png",
+  "image": "{{ site.url }}{{ page.image | default: '/assets/img/equipe_cofyfilm.jpg' }}",
+  "telephone": "+55 21 97288-6431",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rio de Janeiro",
+    "addressRegion": "RJ",
+    "addressCountry": "BR"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Rio de Janeiro"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Paulo H. Lima",
+    "sameAs": "{{ site.linkedin }}"
+  },
+  "sameAs": [
+    "{{ site.instagram }}",
+    "{{ site.linkedin }}"
+  ],
+  "knowsAbout": [
+    "Retrato corporativo",
+    "Fotografia industrial",
+    "Fotografia de arquitetura",
+    "Vídeo institucional",
+    "Cobertura de eventos corporativos"
+  ]
+}
+</script>

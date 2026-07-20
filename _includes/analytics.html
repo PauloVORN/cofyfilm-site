@@ -1,0 +1,24 @@
+{% comment %}
+  Tag Google Ads + conversão no clique do WhatsApp (handoff seção 10.4).
+  Só é injetada quando site.google_ads_id está preenchido no _config.yml —
+  trocar os placeholders AW-XXXXXXXXXX / label ao criar a campanha.
+{% endcomment %}
+{% if site.google_ads_id and site.google_ads_id != "" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_ads_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_ads_id }}');
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    gtag('event', 'conversion', {
+      'send_to': '{{ site.google_ads_id }}/{{ site.google_ads_conversion_label }}',
+      'event_category': 'contato',
+      'event_label': 'clique_whatsapp'
+    });
+  });
+</script>
+{% endif %}

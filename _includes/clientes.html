@@ -1,0 +1,10 @@
+<section class="proof" aria-label="Clientes atendidos">
+  <h2>Empresas que já confiaram na Cofy Film</h2>
+  {% assign logos = site.static_files | where_exp: "file", "file.path contains '/assets/img/logos/'" | sort: "path" %}
+  <div class="logos">
+    {% for logo in logos %}
+      {% assign logo_name = logo.basename | replace: '-', ' ' %}
+      <img src="{{ logo.path | relative_url }}" alt="{{ logo_name }}" loading="lazy">
+    {% endfor %}
+  </div>
+</section>

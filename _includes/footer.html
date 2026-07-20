@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  <a class="footer-wordmark" href="{{ '/' | relative_url }}">COFY FILM</a>
+  <nav class="footer-nav" aria-label="Menu do rodapé">
+    <a href="{{ '/retratos-e-equipes/' | relative_url }}">Retratos e Equipes</a>
+    <a href="{{ '/arquitetura/' | relative_url }}">Arquitetura</a>
+    <a href="{{ '/industria/' | relative_url }}">Indústria</a>
+    <a href="{{ '/institucional/' | relative_url }}">Institucional</a>
+    <a href="{{ '/eventos/' | relative_url }}">Eventos</a>
+    <a href="{{ '/portfolio/' | relative_url }}">Portfólio</a>
+    <a href="{{ '/sobre/' | relative_url }}">Sobre</a>
+    <a href="{{ '/contato/' | relative_url }}">Contato</a>
+    <a href="{{ '/politica-de-privacidade/' | relative_url }}">Política de Privacidade</a>
+  </nav>
+  <div class="footer-contact">
+    <a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp {{ site.whatsapp_display }}</a>
+    <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>
+    <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p class="copyright">Cofy Film Produção Audiovisual e Fotográfica · Rio de Janeiro · © {{ site.time | date: '%Y' }}</p>
+</footer>

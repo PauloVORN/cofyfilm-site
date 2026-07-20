@@ -1,0 +1,16 @@
+<nav class="site-header" aria-label="Menu principal">
+  <a class="nav-logo" href="{{ '/' | relative_url }}">COFY FILM</a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menu">
+    <span></span><span></span>
+  </label>
+  <ul class="nav-links">
+    <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+    <li><a href="{{ '/retratos-e-equipes/' | relative_url }}" {% if page.url contains 'retratos' %}class="active"{% endif %}>Retratos e Equipes</a></li>
+    <li><a href="{{ '/arquitetura/' | relative_url }}" {% if page.url contains 'arquitetura' %}class="active"{% endif %}>Arquitetura</a></li>
+    <li><a href="{{ '/industria/' | relative_url }}" {% if page.url contains 'industria' %}class="active"{% endif %}>Indústria</a></li>
+    <li><a href="{{ '/institucional/' | relative_url }}" {% if page.url contains 'institucional' %}class="active"{% endif %}>Institucional</a></li>
+    <li><a href="{{ '/eventos/' | relative_url }}" {% if page.url contains 'eventos' %}class="active"{% endif %}>Eventos</a></li>
+    <li><a href="{{ '/contato/' | relative_url }}" class="nav-cta">Contato</a></li>
+  </ul>
+</nav>
