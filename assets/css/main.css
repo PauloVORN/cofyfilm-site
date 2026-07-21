@@ -353,7 +353,7 @@ nav.site-header {
 .services-header .eyebrow { margin-bottom: 1rem; }
 .services-header h2 { font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.4rem); }
 .services-header .services-sub {
-  color: var(--ch5);
+  color: var(--em);
   font-size: 1.05rem;
   font-style: italic;
   max-width: 480px;
