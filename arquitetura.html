@@ -26,6 +26,34 @@ service_type: Fotografia de arquitetura
 {% include case-capa.html folder="arquitetura" %}
 {% include gallery.html folder="arquitetura" skip_capa=true %}
 
+<div class="page-body">
+  <h2>Vídeo</h2>
+  <p>Além da foto, também gravamos vídeo de empreendimento — do interior decorado à vista, com captação aérea quando o projeto pede.</p>
+</div>
+
+<!-- Vídeos hospedados no Cloudflare R2 (bucket cofyfilm-videos, publico
+     via r2.dev), fora do repositorio (ver .gitignore). -->
+<div class="video-grid">
+  <div class="video-card">
+    <div class="video-embed">
+      <video src="https://pub-29780baa42954c7a9457dbe4f11861b9.r2.dev/video-arquitetura-casa-malibu-interiores-rio-de-janeiro.mp4" poster="{{ '/assets/img/video-posters/capa-video-arquitetura-casa-malibu-interiores-rio-de-janeiro.jpg' | relative_url }}" controls playsinline preload="metadata"></video>
+    </div>
+    <p class="video-caption">Casa Malibu — interiores</p>
+  </div>
+  <div class="video-card">
+    <div class="video-embed">
+      <video src="https://pub-29780baa42954c7a9457dbe4f11861b9.r2.dev/video-arquitetura-casa-vista-aerea-rio-de-janeiro.mp4" poster="{{ '/assets/img/video-posters/capa-video-arquitetura-casa-vista-aerea-rio-de-janeiro.jpg' | relative_url }}" controls playsinline preload="metadata"></video>
+    </div>
+    <p class="video-caption">Vista aérea — cobertura e área de lazer</p>
+  </div>
+  <div class="video-card">
+    <div class="video-embed">
+      <video src="https://pub-29780baa42954c7a9457dbe4f11861b9.r2.dev/video-arquitetura-casa-joa-piscina-rio-de-janeiro.mp4" poster="{{ '/assets/img/video-posters/capa-video-arquitetura-casa-joa-piscina-rio-de-janeiro.jpg' | relative_url }}" controls playsinline preload="metadata"></video>
+    </div>
+    <p class="video-caption">Casa no Joá — piscina com vista pra Pedra da Gávea</p>
+  </div>
+</div>
+
 <div class="cta-block">
   {% include whatsapp-cta.html text="Olá, vim pelo site da Cofy Film e gostaria de um orçamento para fotografia de arquitetura." label="Solicitar orçamento para fotografia de arquitetura" %}
 </div>

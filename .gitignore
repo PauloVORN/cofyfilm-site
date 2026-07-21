@@ -9,3 +9,5 @@ serve.bat
 # Videos vao pro R2 (Cloudflare), nao pro repositorio do GitHub Pages
 assets/mp4/
 assets/mp4-web/
+assets/mp4-arquitetura/
+assets/mp4-arquitetura-web/
