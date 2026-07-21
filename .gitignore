@@ -5,3 +5,7 @@ _site/
 vendor/
 .bundle/
 serve.bat
+
+# Videos vao pro R2 (Cloudflare), nao pro repositorio do GitHub Pages
+assets/mp4/
+assets/mp4-web/
