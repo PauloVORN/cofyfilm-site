@@ -145,7 +145,7 @@ nav.site-header {
 /* ---------- Hero (Home) — mecânica emprestada do vorsk-landing-v2 ---------- */
 @keyframes heroFadeUp { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: translateY(0) } }
 @keyframes heroFadeIn { from { opacity: 0 } to { opacity: 1 } }
-@keyframes focusPull { from { opacity: 0; filter: blur(3px); transform: translateY(12px) } to { opacity: 1; filter: blur(0); transform: translateY(0) } }
+@keyframes focusPull { from { filter: blur(3px); transform: translateY(12px) } to { filter: blur(0); transform: translateY(0) } }
 @keyframes drawLine { from { transform: scaleX(0) } to { transform: scaleX(1) } }
 @keyframes drawLineFromLeft { from { width: 0 } to { width: 30px } }
 @keyframes pulseLine { 0%, 100% { opacity: .15; transform: scaleX(.6) } 50% { opacity: .5; transform: scaleX(1) } }
@@ -228,8 +228,6 @@ nav.site-header {
   letter-spacing: .02em;
   color: var(--ch);
   margin-bottom: 3rem;
-  opacity: 0;
-  animation: heroFadeUp 1.2s ease .4s both;
 }
 .hero-title em { font-family: var(--serif); font-weight: 300; font-style: italic; color: var(--em); }
 
