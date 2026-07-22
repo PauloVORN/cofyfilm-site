@@ -1,15 +1,20 @@
 {% comment %}
-  Tag Google Ads + conversão no clique do WhatsApp (handoff seção 10.4).
-  Só é injetada quando site.google_ads_id está preenchido no _config.yml —
-  trocar os placeholders AW-XXXXXXXXXX / label ao criar a campanha.
+  GA4 (carrega sempre que site.ga4_id estiver preenchido) + Google Ads
+  (handoff seção 10.4, continua condicional aos placeholders). Um único
+  script gtag — cada um recebe seu próprio gtag('config', ...) quando
+  presente. A conversão no clique do WhatsApp continua atrelada só ao
+  Google Ads, como antes.
 {% endcomment %}
-{% if site.google_ads_id and site.google_ads_id != "" %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_ads_id }}"></script>
+{% assign has_ga4 = site.ga4_id and site.ga4_id != "" %}
+{% assign has_ads = site.google_ads_id and site.google_ads_id != "" %}
+{% if has_ga4 or has_ads %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id | default: site.google_ads_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', '{{ site.google_ads_id }}');
+  {% if has_ga4 %}gtag('config', '{{ site.ga4_id }}');{% endif %}
+  {% if has_ads %}gtag('config', '{{ site.google_ads_id }}');
 
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href*="wa.me"]');
@@ -20,5 +25,6 @@
       'event_label': 'clique_whatsapp'
     });
   });
+  {% endif %}
 </script>
 {% endif %}
