@@ -1,0 +1,14 @@
+{% comment %}
+  Capa de serviço na home (handoff seção 4c) — mesmo padrão <picture>
+  AVIF/WebP do gallery.html, só que com sizes menores (a capa renderiza
+  pequena no grid, 480/800 bastam). Abaixo da dobra: lazy.
+  Parâmetros: src (caminho completo do jpg, ex. /assets/img/retrato/foo.jpg), alt.
+{% endcomment %}
+{% assign src = include.src %}
+{% assign base = src | split: '.' | first %}
+{% assign dims = site.data.img_dimensions[src] %}
+<picture>
+  <source type="image/avif" srcset="{{ base | append: '-480.avif' | relative_url }} 480w, {{ base | append: '-800.avif' | relative_url }} 800w" sizes="(max-width: 700px) 50vw, 20vw">
+  <source type="image/webp" srcset="{{ base | append: '-480.webp' | relative_url }} 480w, {{ base | append: '-800.webp' | relative_url }} 800w" sizes="(max-width: 700px) 50vw, 20vw">
+  <img src="{{ src | relative_url }}" alt="{{ include.alt }}" loading="lazy" {% if dims %}width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
+</picture>

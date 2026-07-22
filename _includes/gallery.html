@@ -1,12 +1,16 @@
 {% comment %}
   Galeria masonry (CSS column-count) — nenhuma foto é cortada, cada uma
   preserva a proporção original (handoff seção 9.1).
+  Cada JPG tem derivados AVIF/WebP em 480/800/1200px gerados por
+  build-img-derivatives.sh (mesmo nome + sufixo -480/-800/-1200), servidos
+  via <picture> com fallback pro JPG original. width/height vêm de
+  _data/img_dimensions.yml (handoff seção 4a/4b) — meta é CLS zero.
   Parâmetros: folder (obrigatório), limit (opcional), skip_capa (opcional —
   omite a foto já exibida como capa logo acima).
 {% endcomment %}
 {% assign folder = include.folder %}
 {% assign gallery_path = '/assets/img/' | append: folder | append: '/' %}
-{% assign photos = site.static_files | where_exp: "file", "file.path contains gallery_path" | sort: "path" %}
+{% assign photos = site.static_files | where_exp: "file", "file.path contains gallery_path" | where_exp: "file", "file.extname == '.jpg'" | sort: "path" %}
 {% assign case = site.data.portfolio[folder] %}
 {% if include.skip_capa and case %}
   {% assign capa_name = case.capa %}
@@ -24,8 +28,14 @@
 <div class="gallery">
   {% for photo in photos %}
     {% assign alt_text = photo.basename | replace: '-', ' ' | capitalize %}
+    {% assign base = gallery_path | append: photo.basename %}
+    {% assign dims = site.data.img_dimensions[photo.path] %}
     <a href="{{ photo.path | relative_url }}" class="gallery-item" data-lightbox>
-      <img src="{{ photo.path | relative_url }}" alt="{{ alt_text }}" loading="lazy">
+      <picture>
+        <source type="image/avif" srcset="{{ base | append: '-480.avif' | relative_url }} 480w, {{ base | append: '-800.avif' | relative_url }} 800w, {{ base | append: '-1200.avif' | relative_url }} 1200w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw">
+        <source type="image/webp" srcset="{{ base | append: '-480.webp' | relative_url }} 480w, {{ base | append: '-800.webp' | relative_url }} 800w, {{ base | append: '-1200.webp' | relative_url }} 1200w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw">
+        <img src="{{ photo.path | relative_url }}" alt="{{ alt_text }}" loading="lazy" {% if dims %}width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
+      </picture>
     </a>
   {% endfor %}
 </div>

@@ -1,14 +1,25 @@
 {% comment %}
   Foto de capa em destaque antes da galeria completa (handoff seção 9.2).
+  É a imagem mais próxima da dobra nas páginas internas — sem lazy,
+  fetchpriority alta (handoff seção 4d). Mesmo padrão <picture>
+  AVIF/WebP + width/height do gallery.html.
   Parâmetro: folder — busca capa e legenda em _data/portfolio.yml.
 {% endcomment %}
 {% assign case = site.data.portfolio[include.folder] %}
 {% if case %}
 <figure class="case-capa">
-  {% assign capa_path = '/assets/img/' | append: include.folder | append: '/' | append: case.capa %}
-  {% assign alt_text = case.capa | split: '.' | first | replace: '-', ' ' | capitalize %}
+  {% assign capa_dir = '/assets/img/' | append: include.folder | append: '/' %}
+  {% assign capa_path = capa_dir | append: case.capa %}
+  {% assign capa_base = case.capa | split: '.' | first %}
+  {% assign base = capa_dir | append: capa_base %}
+  {% assign alt_text = capa_base | replace: '-', ' ' | capitalize %}
+  {% assign dims = site.data.img_dimensions[capa_path] %}
   <a href="{{ capa_path | relative_url }}" data-lightbox style="cursor: zoom-in;">
-    <img src="{{ capa_path | relative_url }}" alt="{{ alt_text }}">
+    <picture>
+      <source type="image/avif" srcset="{{ base | append: '-480.avif' | relative_url }} 480w, {{ base | append: '-800.avif' | relative_url }} 800w, {{ base | append: '-1200.avif' | relative_url }} 1200w" sizes="(max-width: 900px) 100vw, 900px">
+      <source type="image/webp" srcset="{{ base | append: '-480.webp' | relative_url }} 480w, {{ base | append: '-800.webp' | relative_url }} 800w, {{ base | append: '-1200.webp' | relative_url }} 1200w" sizes="(max-width: 900px) 100vw, 900px">
+      <img src="{{ capa_path | relative_url }}" alt="{{ alt_text }}" fetchpriority="high" {% if dims %}width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
+    </picture>
   </a>
   <figcaption>{{ case.legenda }}</figcaption>
 </figure>
