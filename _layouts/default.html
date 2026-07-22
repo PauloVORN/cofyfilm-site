@@ -23,19 +23,6 @@
   {% if page.service_type %}
   {% include service-schema.html %}
   {% endif %}
-  {% if page.url == "/" %}
-  <script>
-    /* Animação de entrada: 1x por sessão, só na Home (handoff seção 8) */
-    (function () {
-      try {
-        if (!sessionStorage.getItem('cofyIntroPlayed')) {
-          document.documentElement.classList.add('play-intro');
-          sessionStorage.setItem('cofyIntroPlayed', '1');
-        }
-      } catch (e) { /* sessionStorage bloqueado: mostra tudo sem animar */ }
-    })();
-  </script>
-  {% endif %}
   {% include analytics.html %}
 </head>
 <body>

@@ -44,10 +44,6 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--em); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-@keyframes fi { from { opacity: 0 } to { opacity: 1 } }
-@keyframes fu { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: translateY(0) } }
-@keyframes cut { from { transform: scaleX(0) } to { transform: scaleX(1) } }
-
 /* ---------- Nav ---------- */
 nav.site-header {
   position: fixed;
@@ -96,7 +92,8 @@ nav.site-header {
 }
 
 .nav-toggle { display: none; }
-.nav-toggle-label { display: none; cursor: pointer; z-index: 501; }
+.nav-toggle-label { display: none; cursor: pointer; z-index: 501; padding: 12px; margin: -12px; }
+.nav-toggle-overlay { display: none; }
 .nav-toggle-label span {
   display: block;
   width: 24px;
@@ -119,69 +116,22 @@ nav.site-header {
     gap: 1.6rem;
     background: var(--bk);
     border-bottom: 1px solid var(--co15);
+    z-index: 500;
   }
   .nav-links a { font-size: .7rem; }
   .nav-toggle:checked ~ .nav-links { display: flex; }
+
+  .nav-toggle-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 499;
+    cursor: default;
+  }
+  .nav-toggle:checked ~ .nav-toggle-overlay { display: block; }
 }
 
-/* ---------- Splash de entrada (Home, 1x por sessão) ---------- */
-@keyframes overlayOut {
-  from { opacity: 1; }
-  to { opacity: 0; visibility: hidden; }
-}
-
-.intro-overlay {
-  display: none; /* sem .play-intro no <html>, o splash nem aparece */
-  position: fixed;
-  inset: 0;
-  z-index: 10001; /* acima do grain e do lightbox */
-  background: var(--bk);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  pointer-events: none;
-}
-
-.play-intro .intro-overlay {
-  display: flex;
-  animation: overlayOut .9s ease 3.1s forwards;
-}
-
-.play-intro .intro-overlay .eyebrow { opacity: 0; animation: fu 1s ease .2s forwards; }
-.play-intro .intro-overlay .wordmark { opacity: 0; animation: fi 1.4s ease .5s forwards; }
-.play-intro .intro-overlay .wordmark-line { transform: scaleX(0); animation: cut 1s cubic-bezier(.16, 1, .3, 1) 1.3s forwards; }
-.play-intro .intro-overlay .intro-tagline { opacity: 0; animation: fu 1s ease 1.9s forwards; }
-
-.wordmark {
-  font-family: var(--sans);
-  font-weight: 200;
-  font-size: clamp(2rem, 6.5vw, 4.2rem);
-  letter-spacing: .2em;
-  color: var(--ch);
-  margin-bottom: 1rem;
-  padding-right: .2em; /* compensa o tracking do último caractere */
-}
-
-.wordmark-line {
-  width: min(280px, 40vw);
-  height: 1px;
-  background: var(--em);
-  margin: 0 auto 1.4rem;
-  transform-origin: center;
-}
-
-.intro-tagline {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: .8rem;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  color: var(--ch5);
-}
-
-/* Eyebrow genérico — splash, .impact, .services-header, .page-intro (o hero
+/* Eyebrow genérico — .impact, .services-header, .page-intro (o hero
    da Home usa .hero-eyebrow, com layout próprio, ver abaixo) */
 .eyebrow {
   font-family: var(--sans);
@@ -205,6 +155,7 @@ nav.site-header {
 
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -254,12 +205,6 @@ nav.site-header {
 
 .hero-content { position: relative; z-index: 10; animation: focusPull 2s ease both; }
 
-/* Sem .play-intro (páginas internas ou 2ª visita na sessão): conteúdo aparece
-   de cara, com a mesma micro-animação. Com .play-intro (1ª visita, home):
-   fica invisível até o splash sumir (~3.3s) e só então revela — os cantos,
-   pulse e scan seguem correndo por baixo do splash opaco, sem custo visual. */
-.play-intro .hero-content { opacity: 0; animation: focusPull 1.2s ease 3.3s both; }
-
 .hero-eyebrow {
   font-family: var(--sans);
   font-size: .55rem;
@@ -298,6 +243,16 @@ nav.site-header {
   animation: heroFadeUp 1.2s ease .7s both;
 }
 
+.hero-sub-group { max-width: 420px; }
+
+.hero-cred {
+  font-family: var(--sans);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  color: var(--co);
+  margin-top: .6rem;
+}
+
 .hero-sub {
   font-family: var(--serif);
   font-size: 1.1rem;
@@ -313,6 +268,7 @@ nav.site-header {
   .hero { padding: 0 1.5rem 3.5rem; }
   .hero-vf { inset: 1.25rem; }
   .hero-title { font-size: clamp(2rem, 10vw, 3.2rem); }
+  .hero-eyebrow { font-size: .7rem; }
 }
 
 /* ---------- CTA WhatsApp ---------- */
@@ -568,7 +524,7 @@ nav.site-header {
 /* ---------- Vídeo (institucional) — formato horizontal 16:9 ---------- */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
   gap: 1.5rem;
   max-width: 1160px;
   margin: 2rem auto;
@@ -694,4 +650,7 @@ footer.site-footer {
   color: var(--co);
 }
 
-@media (max-width: 560px) { footer.site-footer { padding: 3rem 1.5rem 2rem; } }
+@media (max-width: 560px) {
+  footer.site-footer { padding: 3rem 1.5rem 2rem; }
+  .footer-nav a, .footer-contact a, .copyright { font-size: .7rem; }
+}
