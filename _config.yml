@@ -3,13 +3,8 @@ tagline: Fotografia e vídeo corporativo no Rio de Janeiro
 description: >-
   Fotografia e vídeo corporativo no Rio de Janeiro. Retratos executivos,
   fotografia industrial e arquitetônica, vídeo institucional e cobertura de eventos.
-# TEMPORÁRIO — fase de teste no GitHub Pages, antes do DNS apontar pro domínio
-# de verdade. Quando o Paulo confirmar que está tudo certo, reverter pra:
-#   url: "https://cofyfilm.com.br"
-#   baseurl: ""
-# e adicionar o CNAME no mesmo commit da troca de DNS.
-url: "https://paulovorn.github.io"
-baseurl: "/cofyfilm-site"
+url: "https://cofyfilm.com.br"
+baseurl: ""
 lang: pt-BR
 timezone: America/Sao_Paulo
 
