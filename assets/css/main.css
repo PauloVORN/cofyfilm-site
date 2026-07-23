@@ -263,15 +263,18 @@ nav.site-header {
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
 
 @media (max-width: 900px) {
-  .hero { padding: 0 1.5rem 3.5rem; }
-  .hero-vf { top: 4rem; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; }
+  /* Sem min-height:100vh: a altura da hero passa a seguir o conteúdo, não
+     a tela do aparelho — evita o vão vazio gigante entre a moldura e o
+     título em telas mais altas (o hero antigo ficava "esticado" e o texto,
+     ancorado embaixo, sobrava um buraco enorme no meio). */
+  .hero { min-height: auto; justify-content: flex-start; padding: 7rem 1.5rem 3.5rem; }
+  .hero-vf { top: 5rem; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; }
   .hero-title { font-size: clamp(2rem, 10vw, 3.2rem); }
-  .hero-eyebrow {
-    font-size: .7rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: .6rem;
-  }
+  /* No mobile a lista de serviços não tem link (os links reais estão no
+     menu hambúrguer) e só ocupava 3 linhas quebradas sem função — some
+     aqui, fica só no desktop onde cabe numa linha só e funciona como
+     contexto discreto acima do título. */
+  .hero-eyebrow { display: none; }
 }
 
 /* ---------- CTA WhatsApp ---------- */
