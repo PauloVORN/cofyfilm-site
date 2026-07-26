@@ -43,3 +43,4 @@ exclude:
   - Gemfile.lock
   - vendor
   - scripts
+  - "handoff-*.md"
