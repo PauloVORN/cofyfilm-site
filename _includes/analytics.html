@@ -1,9 +1,10 @@
 {% comment %}
   GA4 (carrega sempre que site.ga4_id estiver preenchido) + Google Ads
-  (handoff seção 10.4, continua condicional aos placeholders). Um único
-  script gtag — cada um recebe seu próprio gtag('config', ...) quando
-  presente. A conversão no clique do WhatsApp continua atrelada só ao
-  Google Ads, como antes.
+  (opcional, handoff seção 10.4). O clique no WhatsApp dispara um evento
+  GA4 próprio (whatsapp_click) sempre que o GA4 estiver ativo — é esse
+  evento que vira conversão no Google Ads (marcado lá como evento-chave,
+  via propriedade vinculada), em vez de depender de um label de conversão
+  do Ads avulso e fácil de desconfigurar.
 {% endcomment %}
 {% assign has_ga4 = site.ga4_id and site.ga4_id != "" %}
 {% assign has_ads = site.google_ads_id and site.google_ads_id != "" %}
@@ -14,13 +15,13 @@
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
   {% if has_ga4 %}gtag('config', '{{ site.ga4_id }}');{% endif %}
-  {% if has_ads %}gtag('config', '{{ site.google_ads_id }}');
+  {% if has_ads %}gtag('config', '{{ site.google_ads_id }}');{% endif %}
 
+  {% if has_ga4 %}
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href*="wa.me"]');
     if (!link) return;
-    gtag('event', 'conversion', {
-      'send_to': '{{ site.google_ads_id }}/{{ site.google_ads_conversion_label }}',
+    gtag('event', 'whatsapp_click', {
       'event_category': 'contato',
       'event_label': 'clique_whatsapp'
     });
