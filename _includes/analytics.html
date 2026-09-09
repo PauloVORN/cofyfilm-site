@@ -6,8 +6,10 @@
   via propriedade vinculada), em vez de depender de um label de conversão
   do Ads avulso e fácil de desconfigurar.
 {% endcomment %}
-{% assign has_ga4 = site.ga4_id and site.ga4_id != "" %}
-{% assign has_ads = site.google_ads_id and site.google_ads_id != "" %}
+{% assign has_ga4 = false %}
+{% if site.ga4_id and site.ga4_id != "" %}{% assign has_ga4 = true %}{% endif %}
+{% assign has_ads = false %}
+{% if site.google_ads_id and site.google_ads_id != "" %}{% assign has_ads = true %}{% endif %}
 {% if has_ga4 or has_ads %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id | default: site.google_ads_id }}"></script>
 <script>
