@@ -1,6 +1,6 @@
 <div class="lightbox" id="lightbox" hidden>
   <button class="lightbox-close" aria-label="Fechar">&times;</button>
-  <img src="" alt="">
+  <img alt="">
 </div>
 <script>
 (function () {
@@ -19,14 +19,14 @@
     }
     if (!lb.hidden) {
       lb.hidden = true;
-      lbImg.src = '';
+      lbImg.removeAttribute("src");
       document.body.style.overflow = '';
     }
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !lb.hidden) {
       lb.hidden = true;
-      lbImg.src = '';
+      lbImg.removeAttribute("src");
       document.body.style.overflow = '';
     }
   });

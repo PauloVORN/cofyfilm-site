@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cofyfilm.com.br/sitemap.xml

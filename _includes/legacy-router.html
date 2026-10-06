@@ -1,0 +1,20 @@
+<script>
+/* URLs do site antigo (album.php, /portfolio/..., /gallery/..., /blog, /post...)
+   são redirecionadas pro destino mais próximo. Só roda na página 404. */
+(function () {
+  var p = location.pathname.toLowerCase();
+  var fashion = 'https://www.paulohlima.com.br/fotografo-de-moda-rj';
+  var corp = ['institucional','nortec','industria','empresa','fabrica','clinica','inaugura','nba','trofeu','corporativ'];
+  var t = null;
+  if (/^\/(blog|post)/.test(p)) t = '/';
+  else if (/^\/(album\.php|verify\/|gallery|galler|portfolio2|portfolio\/(shooting|ensaio|teatro|trabalhos))/.test(p)) t = fashion;
+  else if (/^\/portfolio\/(videos|tag\/video|video)/.test(p)) {
+    t = corp.some(function (k) { return p.indexOf(k) > -1; })
+      ? '/institucional/'
+      : 'https://www.paulohlima.com.br/fashion-film';
+  } else if (/^\/portfolio\//.test(p)) {
+    t = corp.some(function (k) { return p.indexOf(k) > -1; }) ? '/retratos-e-equipes/' : fashion;
+  }
+  if (t) location.replace(t);
+})();
+</script>
