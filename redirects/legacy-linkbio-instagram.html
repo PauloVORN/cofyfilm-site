@@ -1,5 +1,28 @@
 ---
 permalink: /linkbio-instagram/
-redirect_to: https://cofyfilm.com.br/
+layout: null
 sitemap: false
 ---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://cofyfilm.com.br/">
+  <title>Cofy Film</title>
+  {% comment %}
+    Link da bio do Instagram: leva à home e marca a origem (utm), para o GA4 contar essas visitas como Instagram.
+    Se o link já vier com utm, a marcação existente é mantida.
+  {% endcomment %}
+  <meta http-equiv="refresh" content="0; url=/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=linkbio-instagram">
+  <script>
+    (function () {
+      var q = location.search && location.search.indexOf('utm_') > -1 ? location.search : '?utm_source=instagram&utm_medium=bio&utm_campaign=linkbio-instagram';
+      location.replace('/' + q);
+    })();
+  </script>
+</head>
+<body>
+  <p><a href="/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=linkbio-instagram">Ir para a Cofy Film</a></p>
+</body>
+</html>
