@@ -111,8 +111,39 @@ alt_en: /en/
 
 {% include clientes.html %}
 
+<section class="sobre-faq" aria-label="Sobre a Cofy Film e perguntas frequentes">
+  <div class="page-body">
+    <h2>Quem somos</h2>
+    <p>A Cofy Film é uma produtora de fotografia e vídeo corporativo no Rio de Janeiro. Fundada em 2014 pelo fotógrafo Paulo H. Lima, que trabalha com fotografia desde 2001, produz imagem para empresas: retratos de executivos e equipes, fotografia industrial e de arquitetura, vídeo institucional e cobertura de eventos corporativos. Entre os clientes estão OLX, Reserva, NBA, Nortec, bioMérieux, SBM e Hoya.</p>
+
+    <h2>Perguntas frequentes</h2>
+    <p><strong>Quais serviços a Cofy Film oferece?</strong><br>Retratos executivos e de equipes, fotografia de arquitetura, fotografia industrial, vídeo institucional e cobertura de eventos corporativos, sempre no Rio de Janeiro.</p>
+    <p><strong>Os retratos são feitos em estúdio ou na empresa?</strong><br>As duas opções existem: fazemos em estúdio ou em locação, no local que for mais conveniente para você e sua equipe.</p>
+    <p><strong>Vocês fazem foto e vídeo juntos?</strong><br>Sim. Em eventos e projetos corporativos, fotógrafo e equipe de vídeo trabalham juntos, sem depender de terceiros para fechar a cobertura completa.</p>
+    <p><strong>Qual é o prazo de entrega?</strong><br>Na cobertura de eventos, a entrega padrão é em até 5 dias úteis, com entrega expressa sob consulta. Nos demais projetos, o prazo é combinado no orçamento.</p>
+    <p><strong>Quanto custa?</strong><br>Cada projeto é orçado individualmente. Para receber uma proposta, conte pelo WhatsApp a data, o local, a quantidade de pessoas e se precisa de foto, vídeo ou os dois.</p>
+    <p><strong>Vocês atendem em inglês?</strong><br>Sim. Veja a <a href="{{ '/en/' | relative_url }}" hreflang="en" lang="en">página em inglês</a>.</p>
+  </div>
+</section>
+
 <section class="final-cta">
   <h2>Precisa de imagem profissional pra sua empresa?</h2>
   <p>Fale direto com a gente. Sem formulário, sem espera.</p>
   {% include whatsapp-cta.html %}
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "pt-BR",
+  "mainEntity": [
+    { "@type": "Question", "name": "Quais serviços a Cofy Film oferece?", "acceptedAnswer": { "@type": "Answer", "text": "Retratos executivos e de equipes, fotografia de arquitetura, fotografia industrial, vídeo institucional e cobertura de eventos corporativos, sempre no Rio de Janeiro." } },
+    { "@type": "Question", "name": "Os retratos são feitos em estúdio ou na empresa?", "acceptedAnswer": { "@type": "Answer", "text": "As duas opções existem: fazemos em estúdio ou em locação, no local que for mais conveniente para você e sua equipe." } },
+    { "@type": "Question", "name": "Vocês fazem foto e vídeo juntos?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Em eventos e projetos corporativos, fotógrafo e equipe de vídeo trabalham juntos, sem depender de terceiros para fechar a cobertura completa." } },
+    { "@type": "Question", "name": "Qual é o prazo de entrega?", "acceptedAnswer": { "@type": "Answer", "text": "Na cobertura de eventos, a entrega padrão é em até 5 dias úteis, com entrega expressa sob consulta. Nos demais projetos, o prazo é combinado no orçamento." } },
+    { "@type": "Question", "name": "Quanto custa?", "acceptedAnswer": { "@type": "Answer", "text": "Cada projeto é orçado individualmente. Para receber uma proposta, conte pelo WhatsApp a data, o local, a quantidade de pessoas e se precisa de foto, vídeo ou os dois." } },
+    { "@type": "Question", "name": "Vocês atendem em inglês?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Há uma página em inglês em cofyfilm.com.br/en/." } }
+  ]
+}
+</script>
