@@ -1,0 +1,13 @@
+<nav class="site-header" aria-label="Main menu">
+  <a class="nav-logo" href="{{ '/en/' | relative_url }}">COFY FILM</a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">
+    <span></span><span></span>
+  </label>
+  <ul class="nav-links">
+    <li><a href="{{ '/en/' | relative_url }}" class="active">English</a></li>
+    <li><a href="{{ '/' | relative_url }}" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+    <li><a href="https://wa.me/{{ site.whatsapp }}?text={{ 'Hello, I found the Cofy Film website and would like a quote.' | url_encode | replace: '+', '%20' }}" class="nav-cta" target="_blank" rel="noopener">Contact</a></li>
+  </ul>
+  <label for="nav-toggle" class="nav-toggle-overlay" aria-hidden="true"></label>
+</nav>

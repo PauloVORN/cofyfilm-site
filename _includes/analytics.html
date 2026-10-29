@@ -23,6 +23,13 @@
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href*="wa.me"]');
     if (!link) return;
+    // a mensagem pronta passa a dizer de qual página a pessoa veio (o atendimento reconhece a origem sem perguntar)
+    var h = link.getAttribute('href') || '';
+    var via = '%20(via%20cofyfilm.com.br' + encodeURIComponent(location.pathname) + ')';
+    if (h.indexOf('(via%20') < 0) {
+      if (h.indexOf('site%20da%20Cofy%20Film') > -1) link.setAttribute('href', h.replace('site%20da%20Cofy%20Film', 'site%20da%20Cofy%20Film' + via));
+      else if (h.indexOf('Cofy%20Film%20website') > -1) link.setAttribute('href', h.replace('Cofy%20Film%20website', 'Cofy%20Film%20website' + via));
+    }
     gtag('event', 'whatsapp_click', {
       'event_category': 'contato',
       'event_label': 'clique_whatsapp'
