@@ -30,6 +30,61 @@ redirect_from:
 {% include case-capa.html folder="retrato" %}
 {% include gallery.html folder="retrato" skip_capa=true %}
 
+<section class="valores-ref" aria-label="Valores de referência">
+  <div class="page-body">
+    <h2>Valores de referência</h2>
+    <p><strong>Sessão individual em estúdio, a partir de R$ 800.</strong><br>Sessão de 1 hora e 5 fotos. Valor para 1 pessoa.</p>
+    <p><strong>Sessão individual no seu local de trabalho, a partir de R$ 980.</strong><br>Sessão de 1 hora e 5 fotos. Valor para 1 pessoa.</p>
+    <p><strong>Equipes e empresas (a partir de 5 pessoas): orçamento por projeto.</strong><br>Os valores acima são para sessão individual e não se aplicam a equipes. Em grupo, o projeto é orçado à parte, e o valor por pessoa é menor do que o da sessão individual. Ele depende do número de pessoas, do local, da quantidade de fotos por pessoa e do prazo.</p>
+
+    <h2>Perguntas frequentes</h2>
+    <p><strong>Quanto custa um retrato corporativo?</strong><br>A sessão individual de 1 hora, com 5 fotos, parte de R$ 800 em estúdio e de R$ 980 no seu local de trabalho.</p>
+    <p><strong>E para fotografar uma equipe, por exemplo 50 funcionários?</strong><br>Equipes a partir de 5 pessoas são orçadas por projeto, com condições próprias, e o valor por pessoa é menor do que o da sessão individual. Envie o número de pessoas, o local e o prazo pelo WhatsApp para receber a proposta.</p>
+    <p><strong>A sessão é em estúdio ou na empresa?</strong><br>As duas opções existem. Fazemos em estúdio ou no seu local de trabalho, o que for mais conveniente para você e sua equipe.</p>
+  </div>
+</section>
+
 <div class="cta-block">
   {% include whatsapp-cta.html text="Olá, vim pelo site da Cofy Film e gostaria de agendar uma sessão de retrato corporativo." label="Agendar sessão de retrato corporativo" %}
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Retrato corporativo individual",
+      "serviceType": "Retrato corporativo",
+      "provider": { "@id": "{{ site.url }}/#cofyfilm" },
+      "areaServed": { "@type": "City", "name": "Rio de Janeiro" },
+      "description": "Sessão individual de retrato corporativo, com 1 hora de duração e 5 fotos. Valores válidos para 1 pessoa; equipes a partir de 5 pessoas são orçadas por projeto.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Sessão individual em estúdio (1 hora, 5 fotos, 1 pessoa)",
+          "priceCurrency": "BRL",
+          "priceSpecification": { "@type": "PriceSpecification", "minPrice": 800, "priceCurrency": "BRL" },
+          "eligibleQuantity": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 1, "unitText": "pessoa" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Sessão individual no local de trabalho do cliente (1 hora, 5 fotos, 1 pessoa)",
+          "priceCurrency": "BRL",
+          "priceSpecification": { "@type": "PriceSpecification", "minPrice": 980, "priceCurrency": "BRL" },
+          "eligibleQuantity": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 1, "unitText": "pessoa" }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "pt-BR",
+      "mainEntity": [
+        { "@type": "Question", "name": "Quanto custa um retrato corporativo?", "acceptedAnswer": { "@type": "Answer", "text": "A sessão individual de 1 hora, com 5 fotos, parte de R$ 800 em estúdio e de R$ 980 no seu local de trabalho." } },
+        { "@type": "Question", "name": "E para fotografar uma equipe, por exemplo 50 funcionários?", "acceptedAnswer": { "@type": "Answer", "text": "Equipes a partir de 5 pessoas são orçadas por projeto, com condições próprias, e o valor por pessoa é menor do que o da sessão individual. Envie o número de pessoas, o local e o prazo pelo WhatsApp para receber a proposta." } },
+        { "@type": "Question", "name": "A sessão é em estúdio ou na empresa?", "acceptedAnswer": { "@type": "Answer", "text": "As duas opções existem. Fazemos em estúdio ou no seu local de trabalho, o que for mais conveniente para você e sua equipe." } }
+      ]
+    }
+  ]
+}
+</script>
